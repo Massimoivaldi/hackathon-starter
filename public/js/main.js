@@ -35,6 +35,49 @@ function initMap() {
 
   }
 
+  function orgaPush(poppo){
+    //alert($cookies.get("XSRF-TOKEN"));
+    
+    var data = {};
+    data.id = poppo[0];
+    data.corsoId = poppo[1];
+    
+    $.ajax('/admin/ajax/add_organizzazione', {
+    type: 'POST',
+    headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+    data: JSON.stringify(data),
+    contentType: 'application/json',
+    success: function(data) { 
+      console.log(data);
+      if(data!="no"){
+      $( "#organizzazioni" ).append( '<div class="row" style="padding-bottom:5px;"><div class="col-md-8">'+data.nome+'<div></div></div><div class="col-md-4"><button class="btn btn-default" type="button">Elimina</button></div></div>');
+      }
+    },
+    error  : function() { console.log('error');}
+    });
+  }
+
+  function docePush(poppo){
+    //alert($cookies.get("XSRF-TOKEN"));
+    
+    var data = {};
+    data.id = poppo[0];
+    data.corsoId = poppo[1];
+    
+    $.ajax('/admin/ajax/add_docente', {
+    type: 'POST',
+    headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+    data: JSON.stringify(data),
+    contentType: 'application/json',
+    success: function(data) { 
+      console.log(data);
+      if(data!="no"){
+      $( "#docenti" ).append( '<div class="row" style="padding-bottom:5px;"><div class="col-md-8">'+data.nome+'<div></div></div><div class="col-md-4"><button class="btn btn-default" type="button">Elimina</button></div></div>');
+      }
+    },
+    error  : function() { console.log('error');}
+    });
+  }
   function catePush(poppo){
     //alert($cookies.get("XSRF-TOKEN"));
     
@@ -50,7 +93,7 @@ function initMap() {
     success: function(data) { 
       console.log(data);
       if(data!="no"){
-      $( "#organizzazioni" ).append( '<div class="row" style="padding-bottom:5px;"><div class="col-md-8">'+data.nome+'<div></div></div><div class="col-md-4"><button class="btn btn-default" type="button">Elimina</button></div></div>');
+      $( "#categorie" ).append( '<div class="row" style="padding-bottom:5px;"><div class="col-md-8">'+data.nome+'<div></div></div><div class="col-md-4"><button class="btn btn-default" type="button">Elimina</button></div></div>');
       }
     },
     error  : function() { console.log('error');}

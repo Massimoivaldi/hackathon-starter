@@ -42,7 +42,11 @@ exports.updateOrganizzazione = (req, res) => {
                                                         description : req.body.description 
                                                       }},(err) => {
     if(err){console.log(err);}
-    else {res.redirect('/admin/organizzazione_list');}
+    else {
+      Corso.update({organizzazione:{$elemMatch:{_idorg:req.body.id}}},{ $set: { "organizzazione.$.nome" : req.body.nome, "organizzazione.$.img": req.body.nome , "organizzazione.$.excerpt": req.body.excerpt}},(err) =>{
+        res.redirect('/admin/organizzazione_list');
+      })
+    }
   });
 };
 
@@ -114,7 +118,11 @@ exports.updateDocente = (req, res) => {
                                                         description : req.body.description 
                                                       }},(err) => {
     if(err){console.log(err);}
-    else {res.redirect('/admin/docente_list');}
+    else {
+      Corso.update({docente:{$elemMatch:{_iddocente:req.body.id}}},{ $set: { "docente.$.nome" : req.body.nome, "docente.$.img": req.body.nome , "docente.$.excerpt": req.body.excerpt}},(err) =>{
+        res.redirect('/admin/docente_list');
+      });
+    };
   });
 };
 
@@ -186,7 +194,11 @@ exports.updateCategoria = (req, res) => {
                                                         description : req.body.description 
                                                       }},(err) => {
     if(err){console.log(err);}
-    else {res.redirect('/admin/categoria_list');}
+    else {
+      Corso.update({categoria:{$elemMatch:{_idcategoria:req.body.id}}},{ $set: { "categoria.$.nome" : req.body.nome, "categoria.$.img": req.body.nome , "categoria.$.excerpt": req.body.excerpt}},(err) =>{
+        res.redirect('/admin/categoria_list');
+      });
+    };
   });
 };
 
@@ -302,15 +314,44 @@ exports.editCorso= (req, res) => {
 };
 
 //------------------------------------------------------------------------
-exports.ajaxAddCategoria = (req, res) => {
+exports.ajaxAddOrganizzazione = (req, res) => {
   //console.log(req.body);
   Organizzazione.findOne({_id:req.body.id},(err,orga)=>{
   //console.log(orga);
     Corso.findOne({_id:req.body.corsoId,organizzazione:{$elemMatch:{nome:orga.nome}}},(err,kurz)=>{
     //console.log(kurz);
       if(kurz == null) {
-        Corso.update({_id:req.body.corsoId},{$addToSet:{organizzazione:{idorg:orga._id,nome:orga.nome,img:orga.img,excerpt:orga.excerpt}}},(err) => {
+        Corso.update({_id:req.body.corsoId},{$addToSet:{organizzazione:{_idorg:orga._id,nome:orga.nome,img:orga.img,excerpt:orga.excerpt}}},(err) => {
         res.send(orga);
+        });
+      } else {res.send('no');}
+    });
+  });
+};
+exports.ajaxAddDocente = (req, res) => {
+  //console.log(req.body);
+  Docente.findOne({_id:req.body.id},(err,docente)=>{
+  console.log(docente);
+    Corso.findOne({_id:req.body.corsoId,docente:{$elemMatch:{nome:docente.nome}}},(err,doc)=>{
+    //console.log(kurz);
+      if(doc == null) {
+        Corso.update({_id:req.body.corsoId},{$addToSet:{docente:{_iddocente:docente._id,nome:docente.nome,img:docente.img,excerpt:docente.excerpt}}},(err) => {
+        res.send(docente);
+        });
+      } else {res.send('no');}
+    });
+  });
+};
+
+exports.ajaxAddCategoria = (req, res) => {
+  //console.log(req.body);
+  Categoria.findOne({_id:req.body.id},(err,cate)=>{
+  //console.log(orga);
+    Corso.findOne({_id:req.body.corsoId,categoria:{$elemMatch:{nome:cate.nome}}},(err,doc)=>{
+    //console.log(kurz);
+      if(doc == null) {
+        Corso.update({_id:req.body.corsoId},{$addToSet:{categoria:{_idcategoria:cate._id,nome:cate.nome,img:cate.img,excerpt:cate.excerpt}}},(err) => {
+        res.send(cate);
         });
       } else {res.send('no');}
     });

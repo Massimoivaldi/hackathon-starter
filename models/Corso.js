@@ -10,7 +10,7 @@ const corsoSchema = new mongoose.Schema({
   excerpt: String,
   description: String,
   categoria: [{_idcategoria:Schema.Types.ObjectId, nome:String,img:String,excerpt:String}],
-  docente: [{_iddocente:Schema.Types.ObjectId, nomecognome:String,img:String,excerpt:String}],
+  docente: [{_iddocente:Schema.Types.ObjectId, nome:String,img:String,excerpt:String}],
   organizzazione: [{_idorg:Schema.Types.ObjectId, nome:String,img:String,excerpt:String}]
 }, { timestamps: true });
 

@@ -170,6 +170,8 @@ app.get('/admin/categoria_edit/:id', passportConfig.isAdmin, corsoController.edi
 app.post('/admin/categoria_update', passportConfig.isAdmin, corsoController.updateCategoria);
 app.post('/admin/categoria_form', passportConfig.isAdmin, corsoController.insertCategoria);
 
+app.post('/admin/ajax/add_organizzazione', corsoController.ajaxAddOrganizzazione);
+app.post('/admin/ajax/add_docente', corsoController.ajaxAddDocente);
 app.post('/admin/ajax/add_categoria', corsoController.ajaxAddCategoria);
 
 /**

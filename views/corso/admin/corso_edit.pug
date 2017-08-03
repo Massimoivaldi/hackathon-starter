@@ -34,6 +34,28 @@ block content
           | Inserisci
     hr
     .row(style="padding-bottom:5px;")
+      #categorie.col-md-6
+        h4(style="padding-bottom:10px;")
+          | Categorie del corso
+        each cat in docs.categoria
+          .row(style="padding-bottom:5px;")
+            .col-md-8
+              | #{cat.nome}
+            .col-md-4
+              button.btn.btn-default(type='button')
+                | Elimina
+      .col-md-6
+        h4(style="padding-bottom:10px;")
+          | Lista Categorie
+        each kat in cate
+          .row(style="padding-bottom:5px;")
+            .col-md-8
+              | #{kat.nome}
+            .col-md-4
+              button.btn.btn-default(type='button',onclick='catePush([\"'+ kat._id +'\",\"'+ docs._id +'\"])')
+                | Aggiungi
+    hr
+    .row(style="padding-bottom:5px;")
       #organizzazioni.col-md-6
         h4(style="padding-bottom:10px;")
           | Organizzazioni del corso
@@ -52,7 +74,29 @@ block content
             .col-md-8
               | #{org.nome}
             .col-md-4
-              button.btn.btn-default(type='button',onclick='catePush([\"'+ org._id +'\",\"'+ docs._id +'\"])')
+              button.btn.btn-default(type='button',onclick='orgaPush([\"'+ org._id +'\",\"'+ docs._id +'\"])')
+                | Aggiungi
+    hr
+    .row(style="padding-bottom:5px;")
+      #docenti.col-md-6
+        h4(style="padding-bottom:10px;")
+          | Docenti del corso
+        each docent in docs.docente
+          .row(style="padding-bottom:5px;")
+            .col-md-8
+              | #{docent.nome}
+            .col-md-4
+              button.btn.btn-default(type='button')
+                | Elimina
+      .col-md-6
+        h4(style="padding-bottom:10px;")
+          | Lista organizzazioni
+        each docente in doce
+          .row(style="padding-bottom:5px;")
+            .col-md-8
+              | #{docente.nome}
+            .col-md-4
+              button.btn.btn-default(type='button',onclick='docePush([\"'+ docente._id +'\",\"'+ docs._id +'\"])')
                 | Aggiungi
 
     
