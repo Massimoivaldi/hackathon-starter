@@ -37,6 +37,20 @@
             ul.dropdown-menu
               li
                 a(href='/account') My Account
+              li
+                a(href='/artist') Artist
+              li
+                a(href='/event') Event Set
               li.divider
               li
                 a(href='/logout') Logout
+              if user.admin_level == 7 
+                li.divider
+                li
+                  a(href='/admin/organizzazione_list') Organizzazioni
+                li
+                  a(href='/admin/categoria_list') Categorie
+                li
+                  a(href='/admin/docente_list') Docenti
+                li
+                  a(href='/admin/corso_list') Corsi

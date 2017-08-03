@@ -1,0 +1,21 @@
+extends ../../layout
+
+block content
+  p
+    a.btn.btn-default(href='/admin/organizzazione_form') Nuova organizzazione
+  hr
+  .page-header
+    h3 Lista Organizzazioni
+
+  each doc in docs
+    .row(style="padding-bottom:5px;")
+      .col-md-2
+        | #{doc.img}
+      .col-md-6
+        | #{doc.nome}
+      .col-md-2
+        a.btn.btn-default(href='/admin/organizzazione_edit/' + doc._id)
+          | Edita
+      .col-md-2
+        a.btn.btn-default(href='/admin/organizzazione_delete/' + doc._id)
+          | Cancella

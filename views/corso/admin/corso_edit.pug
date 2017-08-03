@@ -1,0 +1,60 @@
+extends ../../layout
+
+block content
+  .page-header
+    h3 Nuovo Corso
+
+  form.form-horizontal(action='/admin/corso_update', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden', name='id', value=docs._id)
+    .form-group
+      label.col-sm-3.control-label(for='name') Nome Corso
+      .col-sm-7
+        input.form-control(type='text', name='nome', id='nome', value= docs.nome)
+    .form-group
+      label.col-sm-3.control-label(for='img') Immagine
+      .col-sm-7
+        input.form-control(type='text', name='img', id='img', value= docs.img)
+    .form-group
+      label.col-sm-3.control-label(for='icon') Icona
+      .col-sm-7
+        input.form-control(type='text', name='icon', id='icon', value= docs.icon)
+    .form-group
+      label.col-sm-3.control-label(for='excerpt') Excerpt
+      .col-sm-7
+        textarea.form-control(rows='3', name='excerpt', id="excerpt") #{docs.excerpt}
+    .form-group
+      label.col-sm-3.control-label(for='description') Descrizione
+      .col-sm-7
+        textarea.form-control(rows='6', name='description', id="description") #{docs.description}
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          | Inserisci
+    hr
+    .row(style="padding-bottom:5px;")
+      #organizzazioni.col-md-6
+        h4(style="padding-bottom:10px;")
+          | Organizzazioni del corso
+        each organ in docs.organizzazione
+          .row(style="padding-bottom:5px;")
+            .col-md-8
+              | #{organ.nome}
+            .col-md-4
+              button.btn.btn-default(type='button')
+                | Elimina
+      .col-md-6
+        h4(style="padding-bottom:10px;")
+          | Lista organizzazioni
+        each org in orga
+          .row(style="padding-bottom:5px;")
+            .col-md-8
+              | #{org.nome}
+            .col-md-4
+              button.btn.btn-default(type='button',onclick='catePush([\"'+ org._id +'\",\"'+ docs._id +'\"])')
+                | Aggiungi
+
+    
+
+    

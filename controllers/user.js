@@ -41,6 +41,8 @@ exports.postLogin = (req, res, next) => {
     }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
+      console.log(user);
+      //req.session.user_role = 'pippo';
       req.flash('success', { msg: 'Success! You are logged in.' });
       res.redirect(req.session.returnTo || '/');
     });
@@ -374,3 +376,5 @@ exports.postForgot = (req, res, next) => {
     .then(() => res.redirect('/forgot'))
     .catch(next);
 };
+
+

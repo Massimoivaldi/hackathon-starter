@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Artist Information
+
+  form.form-horizontal(action='/artist', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden', name='owner', value=owner)
+    .form-group
+      label.col-sm-3.control-label(for='name') Nome Artista
+      .col-sm-7
+        input.form-control(type='text', name='name', id='name', value= artist.name)
+    .form-group
+      label.col-sm-3.control-label(for='description') Descrizione
+      .col-sm-7
+        input.form-control(type='text', name='description', id='description', value= artist.description)
+    .form-group
+      label.col-sm-3.control-label Gravatar
+      .col-sm-4
+        img(src=user.gravatar(), class='profile', width='100', height='100')
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          | Aggiorna Profilo Artista

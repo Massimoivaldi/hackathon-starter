@@ -14,6 +14,7 @@ const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
 const path = require('path');
 const mongoose = require('mongoose');
+//mongoose.set('debug', true);
 const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
@@ -34,6 +35,9 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+const artistController = require('./controllers/artist');
+const eventController = require('./controllers/event');
+const corsoController = require('./controllers/corso');
 
 /**
  * API keys and Passport configuration.
@@ -134,6 +138,39 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+/**
+ * custom app routes.
+ */
+app.get('/artist', passportConfig.isAuthenticated, artistController.getArtist);
+app.post('/artist', passportConfig.isAuthenticated, artistController.updateArtist);
+app.get('/event', passportConfig.isAuthenticated, eventController.getEvent);
+app.post('/event', passportConfig.isAuthenticated, eventController.insertEvent);
+app.get('/admin/corso_list', passportConfig.isAdmin, corsoController.listCorso);
+app.get('/admin/corso_form', passportConfig.isAdmin, corsoController.formCorso);
+app.get('/admin/corso_delete/:id', passportConfig.isAdmin, corsoController.deleteCorso);
+app.get('/admin/corso_edit/:id', passportConfig.isAdmin, corsoController.editCorso);
+app.post('/admin/corso_update', passportConfig.isAdmin, corsoController.updateCorso);
+app.post('/admin/corso_form', passportConfig.isAdmin, corsoController.insertCorso);
+app.get('/admin/organizzazione_list', passportConfig.isAdmin, corsoController.listOrganizzazione);
+app.get('/admin/organizzazione_form', passportConfig.isAdmin, corsoController.formOrganizzazione);
+app.get('/admin/organizzazione_delete/:id', passportConfig.isAdmin, corsoController.deleteOrganizzazione);
+app.get('/admin/organizzazione_edit/:id', passportConfig.isAdmin, corsoController.editOrganizzazione);
+app.post('/admin/organizzazione_update', passportConfig.isAdmin, corsoController.updateOrganizzazione);
+app.post('/admin/organizzazione_form', passportConfig.isAdmin, corsoController.insertOrganizzazione);
+app.get('/admin/docente_list', passportConfig.isAdmin, corsoController.listDocente);
+app.get('/admin/docente_form', passportConfig.isAdmin, corsoController.formDocente);
+app.get('/admin/docente_delete/:id', passportConfig.isAdmin, corsoController.deleteDocente);
+app.get('/admin/docente_edit/:id', passportConfig.isAdmin, corsoController.editDocente);
+app.post('/admin/docente_update', passportConfig.isAdmin, corsoController.updateDocente);
+app.post('/admin/docente_form', passportConfig.isAdmin, corsoController.insertDocente);
+app.get('/admin/categoria_list', passportConfig.isAdmin, corsoController.listCategoria);
+app.get('/admin/categoria_form', passportConfig.isAdmin, corsoController.formCategoria);
+app.get('/admin/categoria_delete/:id', passportConfig.isAdmin, corsoController.deleteCategoria);
+app.get('/admin/categoria_edit/:id', passportConfig.isAdmin, corsoController.editCategoria);
+app.post('/admin/categoria_update', passportConfig.isAdmin, corsoController.updateCategoria);
+app.post('/admin/categoria_form', passportConfig.isAdmin, corsoController.insertCategoria);
+
+app.post('/admin/ajax/add_categoria', corsoController.ajaxAddCategoria);
 
 /**
  * API examples routes.

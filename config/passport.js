@@ -517,6 +517,20 @@ exports.isAuthenticated = (req, res, next) => {
 };
 
 /**
+ * --- Custom
+ * create admin user: 
+ * db.users.update({ _id: ObjectId("596f8fa4c1b2b30feadc9cfe") },{$set : {"admin_level":7}})
+ */
+exports.isAdmin = (req, res, next) => {
+  if (req.isAuthenticated() && req.user.admin_level == 7) {
+    //console.log('isAdmin');
+    //console.log(req.user);
+    return next();
+  }
+  res.redirect('/login');
+};
+
+/**
  * Authorization Required middleware.
  */
 exports.isAuthorized = (req, res, next) => {

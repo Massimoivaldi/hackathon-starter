@@ -1,0 +1,33 @@
+extends ../../layout
+
+block content
+  .page-header
+    h3 Nuovo Docente
+
+  form.form-horizontal(action='/admin/docente_form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='name') Nome Docente
+      .col-sm-7
+        input.form-control(type='text', name='nome', id='nome')
+    .form-group
+      label.col-sm-3.control-label(for='img') Immagine
+      .col-sm-7
+        input.form-control(type='text', name='img', id='img')
+    .form-group
+      label.col-sm-3.control-label(for='icon') Icona
+      .col-sm-7
+        input.form-control(type='text', name='icon', id='icon')
+    .form-group
+      label.col-sm-3.control-label(for='excerpt') Excerpt
+      .col-sm-7
+        textarea.form-control(rows='3', name='excerpt', id="excerpt") 
+    .form-group
+      label.col-sm-3.control-label(for='description') Descrizione
+      .col-sm-7
+        textarea.form-control(rows='6', name='description', id="description") 
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          | Inserisci
