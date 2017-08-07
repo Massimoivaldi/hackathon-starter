@@ -1,15 +1,17 @@
 extends ../layout
 
 block content
-  .col-sm-8.col-sm-offset-2
-    form(method='POST')
-      legend Forgot Password
-      input(type='hidden', name='_csrf', value=_csrf)
-      .form-group
+  section.contact-1
+  .container
+    .row.contact-details
+      .col-sm-8.text-center.text-md-left.mb-4
+        h3 Password dimenticata
         p Enter your email address below and we will send you password reset instructions.
-        label.control-label(for='email') Email
-        input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
-      .form-group
-        button.btn.btn-primary(type='submit')
-          i.fa.fa-key
-          | Reset Password
+        form.contact-form.mt-4(method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .row
+            .col-md-12
+              input.form-control-custom.mb-4(type='email', name='email', id='email', placeholder='Email', autofocus, required)
+          .row
+            .col-md-12
+              button.btn.btn-primary.btn-lg.mb-4(type='submit') Invia

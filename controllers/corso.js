@@ -98,6 +98,7 @@ exports.insertDocente = (req, res) => {
   const docente = new Docente({ 
     nome: req.body.nome,
     img  : req.body.img,
+    slug  : req.body.slug,
     icon: req.body.icon,
     excerpt: req.body.excerpt,
     description : req.body.description
@@ -110,16 +111,20 @@ exports.insertDocente = (req, res) => {
 
 exports.updateDocente = (req, res) => {
   console.log(req.body);
-  
   Docente.update({ _id: req.body.id }, { $set: { nome: req.body.nome,
                                                         img  : req.body.img,
                                                         icon: req.body.icon,
+                                                        slug: req.body.slug,
                                                         excerpt: req.body.excerpt,
                                                         description : req.body.description 
                                                       }},(err) => {
     if(err){console.log(err);}
     else {
-      Corso.update({docente:{$elemMatch:{_iddocente:req.body.id}}},{ $set: { "docente.$.nome" : req.body.nome, "docente.$.img": req.body.nome , "docente.$.excerpt": req.body.excerpt}},(err) =>{
+      Corso.update({docente:{$elemMatch:{_iddocente:req.body.id}}},{ $set: {  "docente.$.nome" : req.body.nome, 
+                                                                              "docente.$.img": req.body.img , 
+                                                                              "docente.$.excerpt": req.body.excerpt, 
+                                                                              "docente.$.slug": req.body.slug
+                                                                              }},(err) =>{
         res.redirect('/admin/docente_list');
       });
     };
@@ -251,6 +256,7 @@ exports.insertCorso = (req, res) => {
     nome: req.body.nome,
     img  : req.body.img,
     icon: req.body.icon,
+    slug: req.body.slug,
     excerpt: req.body.excerpt,
     description : req.body.description
   });
@@ -266,6 +272,7 @@ exports.updateCorso = (req, res) => {
   Corso.update({ _id: req.body.id }, { $set: { nome: req.body.nome,
                                                         img  : req.body.img,
                                                         icon: req.body.icon,
+                                                        slug: req.body.slug,
                                                         excerpt: req.body.excerpt,
                                                         description : req.body.description 
                                                       }},(err) => {
@@ -321,7 +328,7 @@ exports.ajaxAddOrganizzazione = (req, res) => {
     Corso.findOne({_id:req.body.corsoId,organizzazione:{$elemMatch:{nome:orga.nome}}},(err,kurz)=>{
     //console.log(kurz);
       if(kurz == null) {
-        Corso.update({_id:req.body.corsoId},{$addToSet:{organizzazione:{_idorg:orga._id,nome:orga.nome,img:orga.img,excerpt:orga.excerpt}}},(err) => {
+        Corso.update({_id:req.body.corsoId},{$addToSet:{organizzazione:{_idorg:orga._id,nome:orga.nome,img:orga.img,excerpt:orga.excerpt,slug:orga.slug}}},(err) => {
         res.send(orga);
         });
       } else {res.send('no');}
@@ -335,7 +342,7 @@ exports.ajaxAddDocente = (req, res) => {
     Corso.findOne({_id:req.body.corsoId,docente:{$elemMatch:{nome:docente.nome}}},(err,doc)=>{
     //console.log(kurz);
       if(doc == null) {
-        Corso.update({_id:req.body.corsoId},{$addToSet:{docente:{_iddocente:docente._id,nome:docente.nome,img:docente.img,excerpt:docente.excerpt}}},(err) => {
+        Corso.update({_id:req.body.corsoId},{$addToSet:{docente:{_iddocente:docente._id,nome:docente.nome,img:docente.img,excerpt:docente.excerpt,slug:docente.slug}}},(err) => {
         res.send(docente);
         });
       } else {res.send('no');}
@@ -350,7 +357,7 @@ exports.ajaxAddCategoria = (req, res) => {
     Corso.findOne({_id:req.body.corsoId,categoria:{$elemMatch:{nome:cate.nome}}},(err,doc)=>{
     //console.log(kurz);
       if(doc == null) {
-        Corso.update({_id:req.body.corsoId},{$addToSet:{categoria:{_idcategoria:cate._id,nome:cate.nome,img:cate.img,excerpt:cate.excerpt}}},(err) => {
+        Corso.update({_id:req.body.corsoId},{$addToSet:{categoria:{_idcategoria:cate._id,nome:cate.nome,img:cate.img,excerpt:cate.excerpt,slug:cate.slug}}},(err) => {
         res.send(cate);
         });
       } else {res.send('no');}

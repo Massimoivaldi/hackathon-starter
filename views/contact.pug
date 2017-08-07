@@ -1,25 +1,43 @@
 extends layout
 
 block content
-  .page-header
-    h3 Contact Form
-
-  form.form-horizontal(method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label(class='col-sm-2 control-label', for='name') Name
-      .col-sm-8
-        input.form-control(type='text', name='name', id='name', autofocus=true)
-    .form-group
-      label(class='col-sm-2 control-label', for='email') Email
-      .col-sm-8
-        input.form-control(type='text', name='email', id='email')
-    .form-group
-      label(class='col-sm-2 control-label', for='message') Body
-      .col-sm-8
-        textarea.form-control(name='message', id='message', rows='7')
-    .form-group
-      .col-sm-offset-2.col-sm-8
-        button.btn.btn-primary(type='submit')
-          i.fa.fa-envelope
-          | Send
+  section.contact-1
+  .container
+    .row.contact-details
+      .col-sm-8.text-center.text-md-left.mb-4
+        h3 Richiesta informazioni
+        form.contact-form.mt-4
+          .row
+            .col-md-5
+              input.form-control-custom.mb-4(type='text', placeholder='Nome e cognome' , id='name', name='name')
+            .col-md-5
+              input.form-control-custom.mb-4(type='text', placeholder='Indirizzo email',  id='email',name='email')
+            br
+          .row
+            .col-md-10
+              textarea.form-control-custom.mb-4(name='message', id='message', rows='3',placeholder='Messaggio')
+              br
+              button.btn.btn-primary.btn-lg.mb-4(type='submit') Invia Messaggio
+      .col-sm-4.text-center.text-md-left
+        h3 Contact
+        h4.pt-4 Email
+        p hello@startup.co
+        h4.pt-2 Phone
+        p +111 234 567 89
+        h4.pt-2 Address
+        p
+          | 1 Street Name, City, Zip Code
+          br
+          |             United States
+        ul.social
+          li
+            a.fa.fa-facebook(href='#', title='Facebook')
+          li
+            a.fa.fa-twitter(href='#', title='Twitter')
+          li
+            a.fa.fa-google(href='#', title='Google+')
+          li
+            a.fa.fa-dribbble(href='#', title='Dribbble')
+          li
+            a.fa.fa-instagram(href='#', title='Instagram')
+          .clear

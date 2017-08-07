@@ -9,9 +9,11 @@ const corsoSchema = new mongoose.Schema({
   icon: String,
   excerpt: String,
   description: String,
-  categoria: [{_idcategoria:Schema.Types.ObjectId, nome:String,img:String,excerpt:String}],
-  docente: [{_iddocente:Schema.Types.ObjectId, nome:String,img:String,excerpt:String}],
-  organizzazione: [{_idorg:Schema.Types.ObjectId, nome:String,img:String,excerpt:String}]
+  slug: String,
+  evento: [{localita:String,durata:String,orari:String,sede:{indirizzo:String,lat:Number,long:Number},inizio:Date,prezzo:String,timing:String}],
+  categoria: [{_idcategoria:Schema.Types.ObjectId, nome:String,img:String,excerpt:String,slug:String}],
+  docente: [{_iddocente:Schema.Types.ObjectId, nome:String,img:String,excerpt:String,slug:String}],
+  organizzazione: [{_idorg:Schema.Types.ObjectId, nome:String,img:String,excerpt:String,slug:String}]
 }, { timestamps: true });
 
 

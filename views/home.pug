@@ -1,27 +1,64 @@
 extends layout
 
 block content
-  h1 Hackathon Starter
-  p.lead A boilerplate for Node.js web applications.
-  hr
-  .row
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
+  section.cover-2.text-left
+    .cover-container
+      .cover-inner.container
+        .row.justify-center
+          .col-lg-5.mt-5.mb-5.text-center.text-lg-left
+            h1.jumbotron-heading Impara a programmare
+            p.lead
+              | Una collezione di corsi che ti porteranno a padroneggiare la tecnologia dello sviluppo su web, svolti in aula con l'aiuto di docenti esperti.
+            p
+              a.btn.btn-outline-success.btn-lg.mb-2.mr-2.ml-2.pill-btn(href='#') Buy Now
+              a.btn.link-white.mb-2.ml-2.ml-2.pill-btn(href='#') Find out more
+          .col-lg-5.offset-lg-2.mt-5.mb-5.text-center
+            img.img-fluid.mt-5.mb-5(src='/kit/images/placeholder-phone.png')
+  section.features-1.text-center
+    .container
+      .row.justify-center
+        .col-md-8.text-center
+          h2 I prossimi corsi
+          p.lead.mt-3
+            | I corsi di codemy sono tenuti in aula ad un massimo di 5 allievi per corso. 
+            br
+            |Il loro scopo e' di rendere l'allievo capace di comprendere il funzionamento delle tecnologie trattate e di metterlo in grado di poter proseguire il suo apprendimento in autonomia o di poter fare delle scelte con cognizione di causa a livello pratico nel momento in cui dovesse affrontare l'esecuzione di un progetto per se stesso o per un cliente.
+          .divider
+      .row
+        for doc in docs
+          .col-md-4.col-feature
+            .rounded(style='border:solid 1px #d9d9d9;background: #f7f7f8; padding:20px;')
+              .rounded-circle.justify-center
+                img(src=''+doc.img)
+              h4 #{doc.nome}
+              p
+                | #{doc.excerpt}
+              p
+                a.btn.btn-outline-primary.mt-2(href='/corsi/'+doc.slug, role='button') Dettagli
+  section.features-4.text-center
+    .container
+      .row.justify-center
+        .col-md-8.text-center
+          h2 docenti
+          p.lead.mt-3
+            | Docenti? Noi non amiamo definirci tali.
+            br
+            | Spesso i docenti in senso stretto sono coloro che conoscono molto bene la teoria ma molto poco le applicazioni pratiche.
+            br
+            | I nostri corsi sono tenuti da "NON DOCENTI" ma che sono esperti programmatori che oltre a conoscere perfettamente la teoria, ogni giorno si confrontano con il mercato e le nuove tecnologie.
+          .divider
+      .row
+        for docente in doce
+          .col-md-6.col-feature
+            .rounded(style='border:solid 1px #a0a0a0; padding:20px;')
+              div
+                img.rounded-circle.justify-center(src=''+docente.img)
+              h4.doce-link
+                a(href='/docenti/'+docente.slug) #{docente.nome}
+              p #{docente.excerpt}
+          
+        
+        
+        
+        
+    

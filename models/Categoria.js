@@ -10,9 +10,10 @@ const categoriaSchema = new mongoose.Schema({
   icon: String,
   excerpt: String,
   description: String,
-  corso: [{_idcorso:Schema.Types.ObjectId, titolo:String,img:String,excerpt:String}],
-  docente: [{_iddocente:Schema.Types.ObjectId, nomecognome:String,img:String,excerpt:String}],
-  organizzazione: [{_idorg:Schema.Types.ObjectId, nome:String,img:String,excerpt:String}]
+  slug: String,
+  corso: [{_idcorso:Schema.Types.ObjectId, titolo:String,img:String,excerpt:String,slug:String}],
+  docente: [{_iddocente:Schema.Types.ObjectId, nomecognome:String,img:String,excerpt:String,slug:String}],
+  organizzazione: [{_idorg:Schema.Types.ObjectId, nome:String,img:String,excerpt:String,slug:String}]
 }, { timestamps: true });
 
 

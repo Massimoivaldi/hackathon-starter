@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+  section.features-1(style='padding-top:40px;')
+    .container
+      .row
+        .col-md-12.col-feature
+          h2 #{docs.nome}
+          p.lead
+            | #{docs.excerpt}
+          .divider
+          .row
+            .col-md-2
+              | Localita' :
+            .col-md-10
+              h5 Torino
+          .row
+            .col-md-2
+              | Durata :
+            .col-md-10
+              h5 4 settimane
+          .row
+            .col-md-2
+              | Orari :
+            .col-md-10
+              h5 Tutti i giovedi' dalle 20.30 alle 22.30
+          .row
+            .col-md-2
+              | Prezzo :
+            .col-md-10
+              h5 &euro; 399.00
+      .row
+        .col-md-9.col-feature
+          h3 programma:
+          .rounded(style='border:solid 1px #d9d9d9;background: #f7f7f8; padding:20px;')
+            p !{docs.description}
+        .col-md-3.col-feature.text-center
+          h3 docenti:
+            - console.log(docs.docente)
+            for docente in docs.docente
+              .rounded(style='border:solid 1px #a0a0a0; padding:20px; margin-bottom:20px;margin-top:8px;')
+                div
+                  img.rounded-circle.justify-center(src=''+docente.img)
+                h4.doce-link-sidebar
+                  a(href='/docenti/'+docente.slug) #{docente.nome}
+                p #{docente.excerpt}
+      
+          
+        
+        
+        
+        
+    

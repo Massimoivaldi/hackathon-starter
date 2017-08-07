@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  section.features-1(style='padding-top:40px;')
+    .container
+      .row
+        .col-md-12.col-feature
+          h2 #{docs.nome}
+          p.lead
+            | #{docs.excerpt}
+          .divider
+      .row
+        .col-md-9.col-feature
+          h3 curriculum:
+          .rounded(style='border:solid 1px #d9d9d9;background: #f7f7f8; padding:20px;')
+            p !{docs.description}
+        .col-md-3.col-feature.text-center
+          h3 corsi:
+            for corso in corsi
+              .rounded(style='border:solid 1px #d9d9d9;background: #f7f7f8; padding:20px; margin-bottom:20px;margin-top:8px;')
+                .rounded-circle.justify-center
+                  img(src=''+corso.img)
+                h4 #{corso.nome}
+                p
+                  | #{corso.excerpt}
+                p
+                a.btn.btn-outline-primary.mt-2(href='/corsi/'+corso.slug, role='button') Dettagli
+              
+      
+          
+        
+        
+        
+        
+    

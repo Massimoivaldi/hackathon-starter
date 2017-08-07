@@ -3,27 +3,38 @@ html
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(property='og:title', content=''+title)
+    meta(property='og:image', content=''+ogImage)
+    meta(property='og:site_name', content='LuSito')
+    meta(property='og:description', content=''+ogDescription)
+
     meta(name='theme-color' content='#4DA5F4')
     meta(name='csrf-token', content=_csrf)
     title #{title} - Hackathon Starter
-    link(rel='shortcut icon', href='/favicon.png')
-    link(rel='stylesheet', href='/css/main.css')
+    link(rel='shortcut icon', href='/kit/images/favicon.ico')
+    link(rel='stylesheet', href='/kit/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/kit/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/kit/css/style.css')
     link(rel='stylesheet', href='/css/custom.css')
+    link(href='https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Montserrat:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i', rel='stylesheet')
+
     
 
   body
     include partials/header
 
-    .container(style='padding-top:70px;padding-bottom:50px;')
-      include partials/flash
-      block content
+    //.container(style='padding-top:70px;padding-bottom:50px;')
+      //include partials/flash
+    block content
 
     include partials/footer
 
-    script(src='/js/lib/jquery-3.1.1.min.js')
-    script(src='/js/lib/bootstrap.min.js')
+    script(src='/kit/js/jquery-3.1.1.min.js')
+    script(src='/kit/bootstrap/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js', integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb', crossorigin='anonymous')
     script(src='/js/main.js')
+
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.

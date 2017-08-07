@@ -1,17 +1,20 @@
 extends ../layout
 
 block content
-  .col-sm-8.col-sm-offset-2
-    form(method='POST')
-      legend Reset Password
-      input(type='hidden', name='_csrf', value=_csrf)
-      .form-group
-        label(for='password') New Password
-        input.form-control(type='password', name='password', id='password', placeholder='New password', autofocus, required)
-      .form-group
-        label(for='confirm') Confirm Password
-        input.form-control(type='password', name='confirm', id='confirm', placeholder='Confirm password', required)
-      .form-group
-        button.btn.btn-primary.btn-reset(type='submit')
-          i.fa.fa-keyboard-o
-          | Change Password
+  section.contact-1
+  .container
+    .row.contact-details
+      .col-sm-8.text-center.text-md-left.mb-4
+        h3 Cambia password
+        form.contact-form.mt-4(method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .row
+            .col-md-12
+              input.form-control-custom.mb-4(ttype='password', name='password', id='password', placeholder='New password', autofocus, required)
+          .row
+            .col-md-12
+              input.form-control-custom.mb-4(type='password', name='confirm', id='confirm', placeholder='Confirm password', required)
+            br
+          .row
+            .col-md-12
+              button.btn.btn-primary.btn-lg.mb-4(type='submit') Invia
