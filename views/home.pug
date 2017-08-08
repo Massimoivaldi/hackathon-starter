@@ -10,11 +10,11 @@ block content
             p.lead
               | Una collezione di corsi che ti porteranno a padroneggiare la tecnologia dello sviluppo su web, svolti in aula con l'aiuto di docenti esperti.
             p
-              a.btn.btn-outline-success.btn-lg.mb-2.mr-2.ml-2.pill-btn(href='#') Buy Now
-              a.btn.link-white.mb-2.ml-2.ml-2.pill-btn(href='#') Find out more
+              a.btn.btn-outline-success.btn-lg.mb-2.mr-2.ml-2.pill-btn(href='/#corsi') Vedi i corsi
+              //a.btn.link-white.mb-2.ml-2.ml-2.pill-btn(href='#') Find out more
           .col-lg-5.offset-lg-2.mt-5.mb-5.text-center
-            img.img-fluid.mt-5.mb-5(src='/kit/images/placeholder-phone.png')
-  section.features-1.text-center
+            img.img-fluid.mt-5.mb-5(src='/kit/images/computerazzo.png')
+  section#corsi.features-1.text-center
     .container
       .row.justify-center
         .col-md-8.text-center
@@ -35,7 +35,7 @@ block content
                 | #{doc.excerpt}
               p
                 a.btn.btn-outline-primary.mt-2(href='/corsi/'+doc.slug, role='button') Dettagli
-  section.features-4.text-center
+  section#docenti.features-4.text-center
     .container
       .row.justify-center
         .col-md-8.text-center

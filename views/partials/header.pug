@@ -1,8 +1,9 @@
-section.cover-50.text-center
+section.cover-50.text-center.fixed-top
   nav.navbar.navbar-toggleable-sm.navbar-custom.navbar-light
+    //.container
+    button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarToggler-5', aria-controls='navbarToggler-5', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
     .container
-      button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarToggler-5', aria-controls='navbarToggler-5', aria-expanded='false', aria-label='Toggle navigation')
-        span.navbar-toggler-icon
       a.navbar-brand(href='/')
         img(src='/kit/images/codemy.png')
       #navbarToggler-5.collapse.navbar-collapse.justify-content-end
@@ -11,27 +12,31 @@ section.cover-50.text-center
             a.nav-link(href='/')
               | Home 
               span.sr-only (current)
-          li.nav-item(class=(title == 'API Examples') ? 'active' : undefined)
-            a.nav-link(href='/api') API
+          //li.nav-item(class=(title == 'API Examples') ? 'active' : undefined)
+            //a.nav-link(href='/api') API
+          li.nav-item
+            a.nav-link(href='/#corsi') Corsi
+          li.nav-item
+            a.nav-link(href='/#docenti') Docenti
           li.nav-item(class=(title == 'Contact') ? 'active' : undefined)
-            a.nav-link(href='/contact') Contact
+            a.nav-link(href='/contact') Contatti
           if !user
             li.nav-item
               a.btn.btn-outline-success.btn-outline(href='/login') Login
             li.nav-item
-              a.btn.btn-outline-warning.btn-outline(href='/signup') Register
+              a.btn.btn-outline-warning.btn-outline(href='/signup') Registrati
           else
             li.nav-item.dropdown
               a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                 | #{user.profile.name}
               .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
-                a.dropdown-item(href='/account') My Account
-                a.dropdown-item(href='/artist') Artist
-                a.dropdown-item(href='/event') Event Set
+                a.dropdown-item(href='/account') Il mio Account
+                //a.dropdown-item(href='/artist') Artist
+                //a.dropdown-item(href='/event') Event Set
                 a.dropdown-item(href='/logout') Logout
                 if user.admin_level == 7 
                   a.dropdown-item(href='/admin/organizzazione_list') Organizzazioni
                   a.dropdown-item(href='/admin/categoria_list') Categorie
                   a.dropdown-item(href='/admin/docente_list') Docenti
                   a.dropdown-item(href='/admin/corso_list') Corsi
-  
+    
