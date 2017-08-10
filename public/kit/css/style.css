@@ -285,7 +285,7 @@ li.nav-item .btn-white {
       width: 6rem;
       height: 6rem;
       background: none;
-      border: 0.15rem solid #dfe1e5; }
+      /*border: 0.15rem solid #dfe1e5;*/ }
 
 .features-4 {
   background: #2b2d34;

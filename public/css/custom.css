@@ -11,7 +11,8 @@ body {
 }
 
 .cover-50 {
-  background: #f7f7f8;
+  /*background: #f7f7f8;*/
+  background: #ffcc00;
   min-height: 6rem;
   height: auto;
   border-radius: 0;
@@ -81,3 +82,4 @@ body {
 
 p {font-size: 16px;}
 .cover-2{padding-top:4rem;}
+
