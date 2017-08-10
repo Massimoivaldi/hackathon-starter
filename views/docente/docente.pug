@@ -19,7 +19,7 @@ block content
             for corso in corsi
               .rounded(style='border:solid 1px #d9d9d9;background: #f7f7f8; padding:20px; margin-bottom:20px;margin-top:8px;')
                 .rounded-circle.justify-center
-                  img(src=''+corso.img)
+                  img.img-thumbnail(src=''+corso.img)
                 h4 #{corso.nome}
                 p
                   | #{corso.excerpt}
