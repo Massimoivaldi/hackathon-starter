@@ -83,3 +83,8 @@ body {
 p {font-size: 16px;}
 .cover-2{padding-top:4rem;}
 
+.btn-outline-yallo, .btn-outline-yallo:visited {
+    color: #ffcc00;
+    border-color: #ffcc00;
+    background: none;
+}

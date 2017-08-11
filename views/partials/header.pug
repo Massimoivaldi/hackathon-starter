@@ -5,7 +5,7 @@ section.cover-50.text-center.fixed-top
       span.navbar-toggler-icon
     .container
       a.navbar-brand(href='/')
-        img(src='/kit/images/logo-codegarage02.png')
+        img(src='/kit/images/logo-codegarage03.png')
       #navbarToggler-5.collapse.navbar-collapse.justify-content-end
         ul.navbar-nav.mt-2.mt-md-0
           li.nav-item(class=(title == 'Home') ? 'active' : undefined)
@@ -22,9 +22,9 @@ section.cover-50.text-center.fixed-top
             a.nav-link(href='/contact') Contatti
           if !user
             li.nav-item
-              a.btn.btn-outline-success.btn-outline(href='/login') Login
+              a.btn.btn-outline-secondary.btn-outline(href='/login') Login
             li.nav-item
-              a.btn.btn-outline-warning.btn-outline(href='/signup') Registrati
+              a.btn.btn-outline-secondary.btn-outline(href='/signup') Registrati
           else
             li.nav-item.dropdown
               a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
