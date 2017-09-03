@@ -15,6 +15,8 @@ block content
         .row.justify-center
           .col-lg-5.mt-5.mb-5.text-center.text-lg-left
             h1.jumbotron-heading Impara a programmare
+              br 
+              | sul web
             p.lead
               | Una collezione di corsi che ti porteranno a padroneggiare la tecnologia dello sviluppo su web, svolti in aula con l'aiuto di docenti esperti.
             p
@@ -25,12 +27,25 @@ block content
   section#corsi.features-1.text-center
     .container
       .row.justify-center
-        .col-md-8.text-center
+        .col-md-10.text-center
           h2 I prossimi corsi
           p.lead.mt-3
-            | I corsi di codemy sono tenuti in aula ad un massimo di 5 allievi per corso. 
+            | I corsi di 
+            strong(style='color:black') codegarage 
+            | sono tenuti 
+            strong(style='color:black') in aula 
+            | ad un massimo di 
+            strong(style='color:black') 5 
+            |allievi per corso. 
             br
-            |Il loro scopo e' di rendere l'allievo capace di comprendere il funzionamento delle tecnologie trattate e di metterlo in grado di poter proseguire il suo apprendimento in autonomia o di poter fare delle scelte con cognizione di causa a livello pratico nel momento in cui dovesse affrontare l'esecuzione di un progetto per se stesso o per un cliente.
+            |Il loro scopo e' di rendere l'allievo capace di 
+            strong(style='color:black') comprendere il funzionamento 
+            | delle tecnologie trattate e di metterlo in grado di poter 
+            strong(style='color:black') proseguire il suo apprendimento in autonomia 
+            | o di poter 
+            strong(style='color:black') fare delle scelte 
+            | con cognizione di causa a livello pratico nel momento in cui dovesse affrontare l'esecuzione di un progetto 
+            strong(style='color:black') per se stesso o per un cliente.
           .divider
       .row
         for doc in docs
@@ -53,7 +68,7 @@ block content
             br
             | Spesso i docenti in senso stretto sono coloro che conoscono molto bene la teoria ma molto poco le applicazioni pratiche.
             br
-            | I nostri corsi sono tenuti da "NON DOCENTI" ma che sono esperti programmatori che oltre a conoscere perfettamente la teoria, ogni giorno si confrontano con il mercato e le nuove tecnologie.
+            | I nostri corsi non sono tenuti da "docenti" ma da esperti programmatori che oltre a conoscere perfettamente la teoria, ogni giorno si confrontano con il mercato e le nuove tecnologie.
           .divider
       .row
         for docente in doce
