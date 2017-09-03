@@ -4,20 +4,38 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-    meta(property='og:title', content=''+title)
-    meta(property='og:image', content=''+ogImage)
-    meta(property='og:site_name', content='LuSito')
-    meta(property='og:description', content=''+ogDescription)
+    meta(property='og:title', content=(!title) ? 'Codegarage - Corsi di programmazione web - Torino' : ''+title)
+    meta(property='og:image', content=(!ogImage) ? 'https://s3.eu-west-2.amazonaws.com/codegarage/web/screenshot.jpg' : ''+ogImage)
+    meta(property='og:site_name', content=(!ogSite_name) ? 'Codegarage' : ''+ogSite_name)
+    meta(property='og:description', content=(!ogDescription) ? 'HTML, JS, CSS, PHP, MYSQL, WORDPRESS, E-COMMERCE' : ''+ogDescription)
 
     meta(name='theme-color' content='#4DA5F4')
     meta(name='csrf-token', content=_csrf)
-    title #{title} - Hackathon Starter
-    link(rel='shortcut icon', href='/kit/images/favicon.ico')
+    if title != undefined
+      title Codegarage - #{title} 
+    else 
+      title Pippullo
+    link(rel='shortcut icon', href='https://s3.eu-west-2.amazonaws.com/codegarage/web/favicon.png')
     link(rel='stylesheet', href='/kit/bootstrap/css/bootstrap.css')
     link(rel='stylesheet', href='/kit/css/font-awesome.min.css')
     link(rel='stylesheet', href='/kit/css/style.css')
     link(rel='stylesheet', href='/css/custom.css')
     link(href='https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Montserrat:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i', rel='stylesheet')
+    // Facebook Pixel Code
+    script.
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1123367814386554');
+      fbq('track', 'PageView');
+    noscript
+      img(height='1', width='1', style='display:none', src='https://www.facebook.com/tr?id=1123367814386554&ev=PageView&noscript=1')
+    // End Facebook Pixel Code
 
     
 
